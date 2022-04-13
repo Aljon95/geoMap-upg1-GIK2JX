@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    //style imports
+    <link rel="stylesheet" href="styles.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""></script>
+      //src imports
+    <script src="/GeoJson/sweden.js"></script>
+    <script src="/GeoJson/russia.js"></script>
+    <script src="/GeoJson/gasstations.js"></script>
+    <script src="/GeoJson/myVector.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+  </head>
+  <body>
+    //nav buttons
+    <nav id="mapnav">
+      <div id="side-bar">
+<button class="T1">Task 1</button>
+<button id="T2">Task 2</button>
+<button id="T3">Task 3</button>
+</div>
+</nav>
+
+    <div id="map">
+      <a
+        href="https://www.maptiler.com"
+        style="position: absolute; left: 10px; bottom: 10px; z-index: 999"
+        ><img
+          src="https://api.maptiler.com/resources/logo.svg"
+          alt="MapTiler logo"
+      /></a>
+    </div>
+    <p>
+      <a href="https://www.maptiler.com/copyright/" target="_blank"
+        >© MapTiler</a
+      >
+      <a href="https://www.openstreetmap.org/copyright" target="_blank"
+        >© OpenStreetMap contributors</a
+      >
+    </p>
+    //map import
+    <script>
+      var map = L.map("map").setView([60.605866810126194, 15.628008842468262], 10);
+      L.tileLayer(
+        "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YZ3aRQEeI3XnEEKdsFiQ",
+        {
+          tileSize: 512,
+          zoomOffset: -1,
+          minZoom: 1,
+          attribution:
+            '\u003ca href="https://www.maptiler.com/copyright/" target="_blank"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href="https://www.openstreetmap.org/copyright" target="_blank"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e',
+          crossOrigin: true,
+        }
+      ).addTo(map);
+
+      /* var leafletIcon = L.icon({
+    iconUrl: 'leaf-green.png',
+    iconSize: [38,95],
+    iconAnchor: [22,94],
+    popupAnchor: [12, -90]
+    });*/
+
+      var LeafletIcon = L.Icon.extend({
+        options: {
+          iconSize: [38, 95],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+        },
+      });
+      //icon
+      var greenIcon = new LeafletIcon({ iconUrl: "pictures/leaf-green.png" });
+
+      var marker = L.marker([60.630946, 15.354812], { icon: greenIcon }).addTo(
+        map
+      );
+
+      var polyline = L.polyline([[ 60.739092, 15.440673 ],[ 60.660125, 15.314532 ],]).addTo(map);
+
+      var circle = L.circle([51.508, -0.11], {
+        color: "red",
+        fillColor: "#f03",
+        fillOpacity: 0.4,
+        radius: 400,
+      }).addTo(map);
+      
+      //polygon
+      var polygon = L.polygon([
+        [60.60643086487198, 15.618589369928078],
+        [60.48023798987668, 15.436571158632077],
+        [60.72619731505316, 15.00311211023543],
+      ]).addTo(map);
+
+      marker
+        .bindPopup(
+          "<b> va ska du hit och göra?</b><b>det är ett dåligt område!"
+        )
+        .openPopup();
+      circle.bindPopup("väldigt fint!");
+      polygon.bindPopup("hej, jag är en trekant");
+
+      L.geoJSON(myGeoJSON).addTo(map);
+
+      L.control
+        .scale({
+          metric: true,
+          imperial: false,
+          position: "topright",
+        })
+        .addTo(map);
+        //vector import
+      var v = myGeoJSON;
+      L.geoJSON(myGeoJSON).addTo(map);
+      //swe region import
+      var s = sweden;
+      L.geoJSON(sweden).addTo(map);
+      //russia region import
+      var r = russia;
+      L.geoJSON(russia).addTo(map);
+      //gasstation stockholm import
+      var g = gas;
+      L.geoJSON(gas).addTo(map);
+
+
+      //button view
+      $('T1').click(function(){
+                    map.setView([60.605866810126194, 15.628008842468262], 1);
+                });
+    </script>
+  </body>
+</html>

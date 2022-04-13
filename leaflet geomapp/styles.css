@@ -1,0 +1,24 @@
+#mapnav {
+ height: 100vh;
+ }               
+#side-bar {
+ position: absolute;
+ z-index: 1000;
+ background: rgba(255,255,255,0.7);
+ padding: 20px 10px 10px 10px;
+ right: 0;  top: 0;  margin: 10px;  border-radius: 10px;  min-height: 30px;
+}
+#map {     
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
+}
+
+#side-bar button {
+background-color: orange;
+opacity: 70%;
+border-radius: 8px;
+box-shadow: 2px 2px 2px 2px;
+ }
