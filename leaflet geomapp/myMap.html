@@ -27,7 +27,7 @@
     //nav buttons
     <nav id="mapnav">
       <div id="side-bar">
-<button class="T1">Task 1</button>
+<button id="map-navigation" class="map-navigation" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 1</button>
 <button id="T2">Task 2</button>
 <button id="T3">Task 3</button>
 </div>
@@ -132,7 +132,16 @@
       var g = gas;
       L.geoJSON(gas).addTo(map);
 
-
+      document.getElementById('map-navigation').onclick = function(abc) {
+        var pos = abc.target.getAttribute('data-position');
+        var zoom = abc.target.getAttribute('data-zoom');
+        if (pos && zoom) {
+            var locat = pos.split(',');
+            var zoo = parseInt(zoom);
+            map.setView(locat, zoo, {animation: true});
+            return false;
+        }
+    }
       //button view
       $('T1').click(function(){
                     map.setView([60.605866810126194, 15.628008842468262], 1);
