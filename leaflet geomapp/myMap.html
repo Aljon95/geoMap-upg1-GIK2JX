@@ -51,6 +51,7 @@
         >© OpenStreetMap contributors</a
       >
     </p>
+    <div id="sidebar"><h1>leaflet-sidebar</h1></div>
     //map import
     <script>
       var map = L.map("map").setView([60.605866810126194, 15.628008842468262], 10);
@@ -65,8 +66,10 @@
           crossOrigin: true,
         }
       ).addTo(map);
-      //var sidebar = L.control.sidebar('sidebar', {position:'left'});
-      //map.addControl(sidebar);
+      var sidebar = L.control.sidebar('sidebar', {position: 'left'});
+      map.addControl(sidebar);
+      sidebar.show();
+      
       /* var leafletIcon = L.icon({
     iconUrl: 'leaf-green.png',
     iconSize: [38,95],
