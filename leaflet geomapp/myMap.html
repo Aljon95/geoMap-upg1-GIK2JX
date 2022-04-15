@@ -28,10 +28,10 @@
     //nav buttons
     <nav id="mapnav">
       <div id="side-bar">
-<button id="map-navigation" class="map-navigation" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 1</button>
-<button id="map-navigation" class="map-navigation" href="#" data-zoom="12" data-position="60.605866810126135, 15.628008842468262">Task 2</button>
-<button id="map-navigation" class="map-navigation" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
-<button id="map-navigation" class="map-navigation" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 4</button>
+<button id="task_1" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 1</button>
+<button id="task_2" href="#" data-zoom="12" data-position="61.605866810126194, 15.628008842468262">Task 2</button>
+<button id="task_3" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
+<button id="task_4" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 4</button>
 
 </div>
 </nav>
@@ -139,7 +139,7 @@
       var g = gas;
       L.geoJSON(gas).addTo(map);
 
-      document.getElementById('map-navigation').onclick = function(abc) {
+      document.getElementById('task_1').onclick = function(abc) {
         var pos = abc.target.getAttribute('data-position');
         var zoom = abc.target.getAttribute('data-zoom');
         if (pos && zoom) {
@@ -148,7 +148,37 @@
             map.setView(locat, zoo, {animation: true});
             return false;
         }
-      };
+    }
+    document.getElementById('task_2').onclick = function(abc) {
+        var pos = abc.target.getAttribute('data-position');
+        var zoom = abc.target.getAttribute('data-zoom');
+        if (pos && zoom) {
+            var locat = pos.split(',');
+            var zoo = parseInt(zoom);
+            map.setView(locat, zoo, {animation: true});
+            return false;
+        }
+    }
+    document.getElementById('task_3').onclick = function(abc) {
+        var pos = abc.target.getAttribute('data-position');
+        var zoom = abc.target.getAttribute('data-zoom');
+        if (pos && zoom) {
+            var locat = pos.split(',');
+            var zoo = parseInt(zoom);
+            map.setView(locat, zoo, {animation: true});
+            return false;
+        }
+    }
+    document.getElementById('task_4').onclick = function(abc) {
+        var pos = abc.target.getAttribute('data-position');
+        var zoom = abc.target.getAttribute('data-zoom');
+        if (pos && zoom) {
+            var locat = pos.split(',');
+            var zoo = parseInt(zoom);
+            map.setView(locat, zoo, {animation: true});
+            return false;
+        }
+    }
     </script>
   </body>
 </html>
