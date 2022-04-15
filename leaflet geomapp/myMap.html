@@ -9,6 +9,7 @@
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""
     />
+    <link rel="stylesheet" href="/leaflet geomapp/src/L.Control.Sidebar.css">
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -18,7 +19,7 @@
     <script src="/leaflet geomapp/GeoJson/russia.js"></script>
     <script src="/leaflet geomapp/GeoJson/gasstations.js"></script>
     <script src="/leaflet geomapp/GeoJson/myVector.js"></script>
-
+    <script src="src/L.Control.Sidebar.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
@@ -64,7 +65,8 @@
           crossOrigin: true,
         }
       ).addTo(map);
-
+      //var sidebar = L.control.sidebar('sidebar', {position:'left'});
+      //map.addControl(sidebar);
       /* var leafletIcon = L.icon({
     iconUrl: 'leaf-green.png',
     iconSize: [38,95],
