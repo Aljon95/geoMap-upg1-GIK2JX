@@ -139,9 +139,9 @@
       var g = gas;
       L.geoJSON(gas).addTo(map);
 
-      document.getElementById('task_1').onclick = function(abc) {
-        var pos = abc.target.getAttribute('data-position');
-        var zoom = abc.target.getAttribute('data-zoom');
+      document.getElementById('task_1').onclick = function(data) {
+        var pos = data.target.getAttribute('data-position');
+        var zoom = data.target.getAttribute('data-zoom');
         if (pos && zoom) {
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
@@ -149,9 +149,9 @@
             return false;
         }
     }
-    document.getElementById('task_2').onclick = function(abc) {
-        var pos = abc.target.getAttribute('data-position');
-        var zoom = abc.target.getAttribute('data-zoom');
+    document.getElementById('task_2').onclick = function(data) {
+        var pos = data.target.getAttribute('data-position');
+        var zoom = data.target.getAttribute('data-zoom');
         if (pos && zoom) {
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
@@ -159,9 +159,9 @@
             return false;
         }
     }
-    document.getElementById('task_3').onclick = function(abc) {
-        var pos = abc.target.getAttribute('data-position');
-        var zoom = abc.target.getAttribute('data-zoom');
+    document.getElementById('task_3').onclick = function(data) {
+        var pos = data.target.getAttribute('data-position');
+        var zoom = data.target.getAttribute('data-zoom');
         if (pos && zoom) {
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
@@ -169,9 +169,9 @@
             return false;
         }
     }
-    document.getElementById('task_4').onclick = function(abc) {
-        var pos = abc.target.getAttribute('data-position');
-        var zoom = abc.target.getAttribute('data-zoom');
+    document.getElementById('task_4').onclick = function(data) {
+        var pos = data.target.getAttribute('data-position');
+        var zoom = data.target.getAttribute('data-zoom');
         if (pos && zoom) {
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
