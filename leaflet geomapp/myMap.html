@@ -20,6 +20,7 @@
     <script src="/leaflet geomapp/GeoJson/gasstations.js"></script>
     <script src="/leaflet geomapp/GeoJson/myVector.js"></script>
     <script src="src/L.Control.Sidebar.js"></script>
+    <script src="/leaflet geomapp/GeoJson/schools.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
@@ -139,6 +140,9 @@
       //gasstation stockholm import
       var g = gas;
       L.geoJSON(gas).addTo(map);
+
+      var School = school;
+      L.geoJSON(school).addTo(map);
 
       document.getElementById('task_1').onclick = function(data) {
         var pos = data.target.getAttribute('data-position');
