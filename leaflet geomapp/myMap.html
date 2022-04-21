@@ -132,47 +132,20 @@
 
       var skola = school;
       L.geoJSON(school).addTo(map);
+//här tobias!
+      var layerOsm = new L.TileLayer('https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            subdomains: ['server', 'services'],
+            maxZoom: 19,
+            noWrap: false,
+            attribution: '<a href="https://www.arcgis.com/">ArcGIS</a>' }); let polylineMeasure = L.control.polylineMeasure({ position: 'topleft', unit: 'kilometres', showBearings: true, clearMeasurementsOnStop: false, showClearControl: true,
+        showUnitControl: true })//hit tobias!!!!
+        <------------------------------------------ polylineMeasure.addTo(map); const line1coords=[ { lat: 22.156883186860703, lng: -158.95019531250003 }, { lat: 22.01436065310322, lng: -157.33520507812503 }, {
+            lat: 21.391704731036587, lng: -156.17065429687503 }, { lat: 20.64306554672647, lng: -155.56640625000003 }, { lat: 19.342244996771804, lng: -155.33569335937503 } ]; polylineMeasure.seed([line1coords]) document.getElementById( 'task_1').onclick=f
+            unction(data) { var pos=d ata.target.getAttribute( 'data-position'); var zoom=d ata.target.getAttribute( 'data-zoom'); if (pos && zoom) { var locat=p os.split( ','); var zoo=p arseInt(zoom); map.setView(locat, zoo, {animation: true}); return false;
+            } } document.getElementById( 'task_2').onclick=f unction(data) { var pos=d ata.target.getAttribute( 'data-position'); var zoom=d ata.target.getAttribute( 'data-zoom'); if (pos && zoom) { var locat=p os.split( ','); var zoo=p arseInt(zoom); map.setView(locat,
+            zoo, {animation: true}); return false; } } document.getElementById( 'task_3').onclick=f unction(data) { var pos=d ata.target.getAttribute( 'data-position'); var zoom=d ata.target.getAttribute( 'data-zoom'); if (pos && zoom) { var locat=p os.split(
+            ','); var zoo=p arseInt(zoom); map.setView(locat, zoo, {animation: true}); return false; } } document.getElementById( 'task_4').onclick=f unction(data) { var pos=d ata.target.getAttribute( 'data-position'); var zoom=d ata.target.getAttribute(
+            'data-zoom'); if (pos && zoom) { var locat=p os.split( ','); var zoo=p arseInt(zoom); map.setView(locat, zoo, {animation: true}); return false; } } </script>
+</body>
 
-      document.getElementById('task_1').onclick = function(data) {
-        var pos = data.target.getAttribute('data-position');
-        var zoom = data.target.getAttribute('data-zoom');
-        if (pos && zoom) {
-            var locat = pos.split(',');
-            var zoo = parseInt(zoom);
-            map.setView(locat, zoo, {animation: true});
-            return false;
-        }
-    }
-    document.getElementById('task_2').onclick = function(data) {
-        var pos = data.target.getAttribute('data-position');
-        var zoom = data.target.getAttribute('data-zoom');
-        if (pos && zoom) {
-            var locat = pos.split(',');
-            var zoo = parseInt(zoom);
-            map.setView(locat, zoo, {animation: true});
-            return false;
-        }
-    }
-    document.getElementById('task_3').onclick = function(data) {
-        var pos = data.target.getAttribute('data-position');
-        var zoom = data.target.getAttribute('data-zoom');
-        if (pos && zoom) {
-            var locat = pos.split(',');
-            var zoo = parseInt(zoom);
-            map.setView(locat, zoo, {animation: true});
-            return false;
-        }
-    }
-    document.getElementById('task_4').onclick = function(data) {
-        var pos = data.target.getAttribute('data-position');
-        var zoom = data.target.getAttribute('data-zoom');
-        if (pos && zoom) {
-            var locat = pos.split(',');
-            var zoo = parseInt(zoom);
-            map.setView(locat, zoo, {animation: true});
-            return false;
-        }
-    }
-    </script>
-  </body>
 </html>
