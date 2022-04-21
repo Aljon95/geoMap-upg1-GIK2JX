@@ -1,34 +1,29 @@
 var school = {
-    type: "FeatureCollection",
-    features: [{
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [58.40601349022682, 13.854706842283374] },
-            id: "Raul",
-            properties: { name: "Raoul Wallenbergskolan" },
+    "type": "FeatureCollection",
+    "features": [ {
+            "type": "Feature",
+            "properties": { "name": "Raoul Wallenbergskolan"},
+            "geometry": { "type": "Point", "coordinates": [13.85556341894664,58.40396964605505 ] }
         },
         {
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [58.38476989820407, 13.83974675989109] },
-            id: "vasa",
-            properties: { name: "Vasaskolan" },
+            "type": "Feature",
+            "properties": { "name": "Vasaskolan" },
+            "geometry": { "type": "Point", "coordinates": [13.83974675989109,58.38476989820407] }
         },
         {
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [58.39758502533579, 13.828808205023615] },
-            id: "billingen",
-            properties: { name: "Billingskolans" },
+            "type": "Feature",
+            "properties": { "name": "Billingskolans" },
+            "geometry": { "type": "Point", "coordinates": [13.828808205023615,58.39758502533579] }
         },
         {
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [58.42810707999948, 13.871361138823238] },
-            id: "Ryd",
-            properties: { name: "Rydskolan" },
+            "type": "Feature",
+            "properties": { "name": "Rydskolan" },
+            "geometry": { "type": "Point", "coordinates": [13.871361138823238,58.42810707999948] }
         },
         {
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [58.39423366284047, 13.849644890775902] },
-            id: "Helena",
-            properties: { name: "Helenaskolan" },
+            "type": "Feature",
+            "properties": { "name": "Helenaskolan" },
+            "geometry": { "type": "Point", "coordinates": [13.849644890775902,58.39423366284047] }
         }
     ]
-};
+}
