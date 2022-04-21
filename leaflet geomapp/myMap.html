@@ -23,9 +23,8 @@
     //nav buttons
     <nav id="mapnav">
         <div id="side-bar">
-            <button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317
-">Task 1</button>
-            <button id="task_2" href="#" data-zoom="12" data-position="61.605866810126194, 15.628008842468262">Task 2</button>
+            <button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317">Task 1</button>
+            <button id="task_2" href="#" data-zoom="13" data-position="58.40396964605505, 13.85556341894664">Task 2</button>
             <button id="task_3" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
             <button id="task_4" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 4</button>
 
@@ -77,21 +76,10 @@
       });
       //icon
       var greenIcon = new LeafletIcon({ iconUrl: "pictures/leaf-green.png" });
-
       var marker = L.marker([60.630946, 15.354812], { icon: greenIcon }).addTo(
         map
       );
-
       var polyline = L.polyline([[ 60.739092, 15.440673 ],[ 60.660125, 15.314532 ],]).addTo(map);
-
-     /* var circle = L.circle([51.508, -0.11], {
-        color: "red",
-        fillColor: "#f03",
-        fillOpacity: 0.4,
-        radius: 400,
-      }).addTo(map);*/
-      
-      //polygon
       var polygon = L.polygon([
         [60.60643086487198, 15.618589369928078],
         [60.48023798987668, 15.436571158632077],
@@ -103,7 +91,7 @@
           "<b> This belongs to task One."
         )
         .openPopup();
-      polygon.bindPopup("hej, jag är en trekant");
+      polygon.bindPopup("hej, jag är en trekant").openPopup();;
 
       L.geoJSON(myGeoJSON).addTo(map);
 
