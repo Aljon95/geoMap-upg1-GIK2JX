@@ -47,7 +47,7 @@
     <div id="sidebar"><h1>leaflet-sidebar</h1></div>
     //map import
     <script>
-      var map = L.map("map").setView([60.605866810126194, 15.628008842468262], 10);
+      var map = L.map("map").setView([58.605866810126194, 15.628008842468262], 6);
       L.tileLayer(
         "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YZ3aRQEeI3XnEEKdsFiQ",
         {
@@ -62,13 +62,6 @@
       var sidebar = L.control.sidebar('sidebar', {position: 'left'});
       map.addControl(sidebar);
       sidebar.show();
-      
-      /* var leafletIcon = L.icon({
-    iconUrl: 'leaf-green.png',
-    iconSize: [38,95],
-    iconAnchor: [22,94],
-    popupAnchor: [12, -90]
-    });*/
 
       var LeafletIcon = L.Icon.extend({
         options: {
@@ -105,18 +98,18 @@
       var v = myGeoJSON;
       L.geoJSON(myGeoJSON).addTo(map);
       //swe region import
-      var s = sweden;
-      L.geoJSON(sweden).addTo(map);
+      //var s = sweden;
+      //L.geoJSON(sweden).addTo(map);
       //russia region import
-      var r = russia;
-      L.geoJSON(russia).addTo(map);
+      //var r = russia;
+      //L.geoJSON(russia).addTo(map);
       //gasstation stockholm import
       var g = gas;
       L.geoJSON(gas).addTo(map);
 
       var skola = school;
       L.geoJSON(school).addTo(map);
-//här tobias!
+
       var layerOsm = new L.TileLayer('https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
             subdomains: ['server', 'services'],
             maxZoom: 19,
@@ -131,18 +124,8 @@
             clearMeasurementsOnStop: false,
             showClearControl: true,
             showUnitControl: true
-        })//hit tobias!!!! <------------------------------------------
+        })
         polylineMeasure.addTo(map);
-
-      const line1coords = [
-                { lat: 58.40396964605505, lng: 13.85556341894664 },
-                { lat: 58.38476989820407, lng: 13.83974675989109 },
-                { lat: 58.39758502533579, lng: 13.83974675989109 },
-                { lat: 58.42810707999948, lng: 13.871361138823238 },
-                { lat: 58.39423366284047, lng: 13.849644890775902 }
-            ];
-
-            polylineMeasure.seed([line1coords]);
             
 
       document.getElementById('task_1').onclick = function(data) {
