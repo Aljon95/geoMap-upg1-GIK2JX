@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     //style imports
     <link rel="stylesheet" href="styles.css">
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <link rel="stylesheet" href="/leaflet geomapp/src/L.Control.Sidebar.css">
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""></script>
-      //src imports
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    //src imports
     <script src="/leaflet geomapp/GeoJson/sweden.js"></script>
     <script src="/leaflet geomapp/GeoJson/russia.js"></script>
     <script src="/leaflet geomapp/GeoJson/gasstations.js"></script>
@@ -23,33 +16,27 @@
     <script src="/leaflet geomapp/GeoJson/schools.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title></title>
-  </head>
-  <body>
+    <title>geomap</title>
+</head>
+
+<body>
     //nav buttons
     <nav id="mapnav">
-      <div id="side-bar">
-<button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317
+        <div id="side-bar">
+            <button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317
 ">Task 1</button>
-<button id="task_2" href="#" data-zoom="12" data-position="61.605866810126194, 15.628008842468262">Task 2</button>
-<button id="task_3" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
-<button id="task_4" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 4</button>
+            <button id="task_2" href="#" data-zoom="12" data-position="61.605866810126194, 15.628008842468262">Task 2</button>
+            <button id="task_3" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
+            <button id="task_4" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 4</button>
 
-</div>
-</nav>
- 
+        </div>
+    </nav>
+
     <div id="map">
-      <a
-        href="https://www.maptiler.com"
-        style="position: absolute; left: 10px; bottom: 10px; z-index: 999"
-        ><img
-          src="https://api.maptiler.com/resources/logo.svg"
-          alt="MapTiler logo"
-      /></a>
+        <a href="https://www.maptiler.com" style="position: absolute; left: 10px; bottom: 10px; z-index: 999"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo" /></a>
     </div>
     <p>
-      <a href="https://www.maptiler.com/copyright/" target="_blank"
-        >© MapTiler</a
+        <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a
       >
       <a href="https://www.openstreetmap.org/copyright" target="_blank"
         >© OpenStreetMap contributors</a
@@ -113,10 +100,9 @@
 
       marker
         .bindPopup(
-          "<b> va ska du hit och göra?</b><b>det är ett dåligt område!"
+          "<b> This belongs to task One."
         )
         .openPopup();
-      circle.bindPopup("väldigt fint!");
       polygon.bindPopup("hej, jag är en trekant");
 
       L.geoJSON(myGeoJSON).addTo(map);
