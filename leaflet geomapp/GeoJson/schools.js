@@ -13,7 +13,7 @@ var school = {
         {
             "type": "Feature",
             "properties": { "name": "Billingskolans" },
-            "geometry": { "type": "Point", "coordinates": [13.828808205023615,58.39758502533579] }
+            "geometry": { "type": "Point", "coordinates": [13.83974675989109,58.39758502533579] }
         },
         {
             "type": "Feature",
