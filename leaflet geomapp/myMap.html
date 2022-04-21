@@ -89,14 +89,10 @@
         [60.72619731505316, 15.00311211023543],
       ]).addTo(map);
 
-      marker
-        .bindPopup(
-          "<b> This belongs to task One."
-        )
-        .openPopup();
-      polygon.bindPopup("hej, jag är en trekant").openPopup();;
+      marker.bindPopup("<b> This belongs to task One.").openPopup();
+      polygon.bindPopup("hej, jag är en trekant").openPopup();
 
-      L.geoJSON(myGeoJSON).addTo(map);
+     L.geoJSON(myGeoJSON).addTo(map);
 
       L.control
         .scale({
