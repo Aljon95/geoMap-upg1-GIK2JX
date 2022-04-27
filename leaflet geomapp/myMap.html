@@ -217,6 +217,13 @@
       [59.321222049014004, 17.887650787019975],
        [59.322191666335094, 17.885962805764645] ];
 L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+var circle = L.circle([51.508, -0.11], {
+    color: 'blue',
+    fillColor: 'blue',
+    fillOpacity: 0.3,
+    radius: 900000
+}).addTo(map);
     </script>
   </body>
 </html>
