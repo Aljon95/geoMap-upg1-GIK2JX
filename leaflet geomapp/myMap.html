@@ -63,6 +63,7 @@
       var sidebar = L.control.sidebar('sidebar', {position: 'left'});
       map.addControl(sidebar);
       
+      
 
       var LeafletIcon = L.Icon.extend({
         options: {
@@ -129,8 +130,8 @@
           // featureLayer contains the indivual layer instance
           featureLayer.on('click', function () {
             // Fires on click of single feature
-            console.log('Clicked feature layer ID: ' + featureData.id);
-            sidebar.show(featureData);
+            sidebar.setContent("<b>School information<br></b>" + featureData.properties.name);
+            sidebar.show();
           });
         }
       }).on('click', function () {
