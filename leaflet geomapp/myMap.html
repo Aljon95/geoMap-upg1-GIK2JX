@@ -16,6 +16,7 @@
     <script src="/leaflet geomapp/GeoJson/myVector.js"></script>
     <script src="src/L.Control.Sidebar.js"></script>
     <script src="/leaflet geomapp/GeoJson/schools.js"></script>
+    <script src="/leaflet geomapp/GeoJson/superMarkets.js"></script>
     <script src="/leaflet geomapp/polyline/Leaflet.PolylineMeasure.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,7 +29,7 @@
         <div id="side-bar">
             <button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317">Task 1</button>
             <button id="task_2" href="#" data-zoom="13" data-position="58.40396964605505, 13.85556341894664">Task 2</button>
-            <button id="task_3" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
+            <button id="task_3" href="#" data-zoom="8" data-position="59.925506790703174, 17.64033555087785">Task 3</button>
             <button id="task_4" href="#" data-zoom="17" data-position="59.3217252470887, 17.886778347187875">Task 4</button>
 
         </div>
@@ -58,12 +59,12 @@
             '\u003ca href="https://www.maptiler.com/copyright/" target="_blank"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href="https://www.openstreetmap.org/copyright" target="_blank"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e',
           crossOrigin: true,
         },
-        geoJsonLayer
+        schools_skovde
       ).addTo(map);
       var sidebar = L.control.sidebar('sidebar', {position: 'left'});
       map.addControl(sidebar);
       
-      
+       
 
       var LeafletIcon = L.Icon.extend({
         options: {
@@ -87,7 +88,7 @@
       marker.bindPopup("<b> This belongs to task One.").openPopup();
       polygon.bindPopup("Yta mellan Borlänge, Falun och Leksand").openPopup(); 
 
-     L.geoJSON(myGeoJSON).addTo(map);
+     //L.geoJSON(myGeoJSON).addTo(map);
 
       L.control
         .scale({
@@ -97,8 +98,8 @@
         })
         .addTo(map);
         //vector import
-      var v = myGeoJSON;
-      L.geoJSON(myGeoJSON).addTo(map);
+      //var v = myGeoJSON;
+      //L.geoJSON(myGeoJSON).addTo(map);
       //swe region import
       //var s = sweden;
       //L.geoJSON(sweden).addTo(map);
@@ -106,8 +107,9 @@
       //var r = russia;
       //L.geoJSON(russia).addTo(map);
       //gasstation stockholm import
-      var g = gas;
-      L.geoJSON(gas).addTo(map);
+      //var g = gas;
+      //L.geoJSON(gas).addTo(map);
+      var superMarket = superMarkets;
 
 
 
@@ -119,10 +121,10 @@
 
 
 
-
+     
+// Task 2 Schools
       var skola = school;
-
-      var geoJsonLayer = L.geoJson(skola, {
+      var schools_skovde = L.geoJson(skola, {
         // Executes on each feature in the dataset 
         onEachFeature: function (featureData, featureLayer) {
           console.log(featureData);
@@ -130,7 +132,7 @@
           // featureLayer contains the indivual layer instance
           featureLayer.on('click', function () {
             // Fires on click of single feature
-            sidebar.setContent("<b>School information<br></b>" + featureData.properties.name);
+            sidebar.setContent("<b>School information<br></b>"+ "<b>School Name: </b>" + featureData.properties.name +"<br><b>Number of students: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
             sidebar.show();
           });
         }
@@ -139,6 +141,29 @@
          console.log('Clicked GeoJSON layer');
       }).addTo(map);;
 
+// task 3 Markets
+      var markets = L.geoJson(superMarket, {
+        // Executes on each feature in the dataset 
+        onEachFeature: function (featureData, featureLayer) {
+          console.log(featureData);
+          var circle = L.circle([51.508, -0.11], {
+          color: 'red',
+          fillColor: '#f03',
+          fillOpacity: 0.5,
+          radius: 500
+          })
+          // featureData contains the actual feature object
+          // featureLayer contains the indivual layer instance
+          featureLayer.on('click', function () {
+            // Fires on click of single feature
+            sidebar.setContent("<b>School information<br></b>"+ "<b>School Name: </b>" + featureData.properties.name +"<br><b>Number of students: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
+            sidebar.show();
+          });
+        }
+      }).on('click', function () {
+        // Fires on each feature in the layer
+         console.log('Clicked GeoJSON layer');
+      }).addTo(map);
 
 
 
