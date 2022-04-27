@@ -29,7 +29,7 @@
             <button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317">Task 1</button>
             <button id="task_2" href="#" data-zoom="13" data-position="58.40396964605505, 13.85556341894664">Task 2</button>
             <button id="task_3" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 3</button>
-            <button id="task_4" href="#" data-zoom="12" data-position="60.605866810126194, 15.628008842468262">Task 4</button>
+            <button id="task_4" href="#" data-zoom="17" data-position="59.3217252470887, 17.886778347187875">Task 4</button>
 
         </div>
     </nav>
@@ -210,6 +210,13 @@
             return false;
         }
     }
+
+    var imageUrl = 'pictures/drottningholmsslott.png',
+    imageBounds = [[59.32238940948281, 17.886870491645023],
+     [59.32104012173038, 17.886842831985515],
+      [59.321222049014004, 17.887650787019975],
+       [59.322191666335094, 17.885962805764645] ];
+L.imageOverlay(imageUrl, imageBounds).addTo(map);
     </script>
   </body>
 </html>
