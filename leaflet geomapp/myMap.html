@@ -145,13 +145,13 @@
       var markets = L.geoJson(superMarket, {
         // Executes on each feature in the dataset 
         onEachFeature: function (featureData, featureLayer) {
-          console.log(featureData);
-          var circle = L.circle([51.508, -0.11], {
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5,
-          radius: 500
-          })
+          console.log(featureData.geometry.coordinates[0]);
+          var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 250
+          }).addTo(map);
           // featureData contains the actual feature object
           // featureLayer contains the indivual layer instance
           featureLayer.on('click', function () {
