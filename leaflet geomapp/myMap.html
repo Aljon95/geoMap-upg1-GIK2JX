@@ -63,7 +63,7 @@
       ).addTo(map);
       var sidebar = L.control.sidebar('sidebar', {position: 'left'});
       map.addControl(sidebar);
-      sidebar.show();
+      
 
       var LeafletIcon = L.Icon.extend({
         options: {
@@ -122,7 +122,6 @@
 
       var skola = school;
 
-      //L.geoJSON(skola).addTo(map);
       var geoJsonLayer = L.geoJson(skola, {
         // Executes on each feature in the dataset 
         onEachFeature: function (featureData, featureLayer) {
@@ -132,6 +131,7 @@
           featureLayer.on('click', function () {
             // Fires on click of single feature
             console.log('Clicked feature layer ID: ' + featureData.id);
+            sidebar.show(featureData);
           });
         }
       }).on('click', function () {
