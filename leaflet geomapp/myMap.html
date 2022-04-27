@@ -133,20 +133,18 @@
       var markets = L.geoJson(superMarket, {
         // Executes on each feature in the dataset 
         onEachFeature: function (featureData, featureLayer) {
-          console.log(featureData);
-          var circle = L.circle([51.508, -0.11], {
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5,
-          radius: 500
-          })
-          // featureData contains the actual feature object
-          // featureLayer contains the indivual layer instance
-          featureLayer.on('click', function () {
-            // Fires on click of single feature
-            sidebar.setContent("<b>Store info<br></b>"+ "<b>Storename: </b>" + featureData.properties.name +"<br><b>: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
+          console.log(featureData.geometry.coordinates[0]);
+          console.log(featureData)
+          featureLayer.on('click',function(){
+            sidebar.setContent("Store info <br>Store Name: " + featureData.properties.name +"<br/>Shop: " + featureData.properties.shop);
             sidebar.show();
           });
+          var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
+            color: '#add8e6',
+            fillColor: '#add8e6',
+            fillOpacity: 0.5,
+            radius: 500
+          }).addTo(map);
         }
       }).on('click', function () {
         // Fires on each feature in the layer
@@ -208,6 +206,7 @@ L.imageOverlay(imageUrl, imageBounds).addTo(map);
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
             map.setView(locat, zoo, {animation: true});
+            sidebar.show();
             return false;
         }
     }
