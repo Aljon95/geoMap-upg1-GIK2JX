@@ -51,7 +51,7 @@ var geoJsonLayer = L.geoJson(school, {
     
     // Executes on each feature in the dataset
     onEachFeature: function (featureData, featureLayer) {
-      console.log("hello world");
+      console.log(featureData);
       // featureData contains the actual feature object
       // featureLayer contains the indivual layer instance
       featureLayer.on('click', function () {
