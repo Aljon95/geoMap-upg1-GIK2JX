@@ -100,7 +100,8 @@ var geoJsonLayer = L.geoJson(school, {
       ]).addTo(map);
 
       marker.bindPopup("<b> This belongs to task One.").openPopup();
-      polygon.bindPopup("hej, jag är en trekant").openPopup();
+      polyline.bindPopup("<b> hej").openPopup();
+      polygon.bindPopup("<b> hej, jag är en trekant").openPopup();
 
      L.geoJSON(myGeoJSON).addTo(map);
 
