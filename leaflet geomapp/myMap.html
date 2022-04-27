@@ -130,7 +130,7 @@
           // featureLayer contains the indivual layer instance
           featureLayer.on('click', function () {
             // Fires on click of single feature
-            sidebar.setContent("<b>School information<br></b>" + featureData.properties.name);
+            sidebar.setContent("<b>School information<br></b>"+ "<b>School Name: </b>" + featureData.properties.name +"<br><b>Number of students: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
             sidebar.show();
           });
         }
