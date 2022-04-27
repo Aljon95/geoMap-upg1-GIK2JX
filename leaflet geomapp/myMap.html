@@ -142,6 +142,11 @@
       }).addTo(map);;
 
 // task 3 Markets
+      let tempMarkets = [];
+      let tempMarket = [];
+      let overLapMarkets = [];
+      
+      var minimumDistance = 1000;
       var markets = L.geoJson(superMarket, {
         // Executes on each feature in the dataset 
         onEachFeature: function (featureData) {
@@ -151,15 +156,31 @@
             fillOpacity: 0.5,
             radius: 500
           }).addTo(map);
+          tempMarkets.push([featureData.properties.full_id,featureData.properties.name,featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]])
         }
-      }).on('click', function () {
-        // Fires on each feature in the layer
-         console.log('Clicked GeoJSON layer');
       }).addTo(map);
-
-
-
-
+      
+      
+      var overlap = L.geoJson(superMarket, {
+        onEachFeature: function (featureData) {
+          let overLapMarketsTemp = {};
+          tempMarkets.forEach(item => {
+            let distance1 = L.latLng(item[2],item[3]);
+            let distance2 = L.latLng(featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]);
+            let distance3 = distance1.distanceTo(distance2)
+            if(distance3 <= minimumDistance){
+              console.log(distance3);
+              tempMarket.push(item[0], item[1]);
+            }
+          }, 
+          overLapMarkets.push({
+            key: featureData.properties.name,
+            value: tempMarket
+          })
+          
+          );
+        }
+      })
 
 
 
