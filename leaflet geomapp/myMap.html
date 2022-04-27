@@ -152,13 +152,6 @@
             fillOpacity: 0.5,
             radius: 250
           }).addTo(map);
-          // featureData contains the actual feature object
-          // featureLayer contains the indivual layer instance
-          featureLayer.on('click', function () {
-            // Fires on click of single feature
-            sidebar.setContent("<b>School information<br></b>"+ "<b>School Name: </b>" + featureData.properties.name +"<br><b>Number of students: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
-            sidebar.show();
-          });
         }
       }).on('click', function () {
         // Fires on each feature in the layer
@@ -222,6 +215,7 @@
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
             map.setView(locat, zoo, {animation: true});
+            sidebar.show();
             return false;
         }
     }
