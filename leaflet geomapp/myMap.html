@@ -47,22 +47,7 @@
     <div id="sidebar"><h1>leaflet-sidebar</h1></div>
     //map import
     <script>
-var geoJsonLayer = L.geoJson(school, {
-    
-    // Executes on each feature in the dataset
-    onEachFeature: function (featureData, featureLayer) {
-      console.log("hello world");
-      // featureData contains the actual feature object
-      // featureLayer contains the indivual layer instance
-      featureLayer.on('click', function () {
-        // Fires on click of single feature
-        console.log('Clicked feature layer ID: ' + featureData.id);
-      });
-    }
-  }).on('click', function () {
-      // Fires on each feature in the layer
-      console.log('Clicked GeoJSON layer');
-  });
+
       var map = L.map("map").setView([58.605866810126194, 15.628008842468262], 6);
       L.tileLayer(
         "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YZ3aRQEeI3XnEEKdsFiQ",
@@ -125,8 +110,46 @@ var geoJsonLayer = L.geoJson(school, {
       var g = gas;
       L.geoJSON(gas).addTo(map);
 
+
+
+
+
+
+
+
+
+
+
+
       var skola = school;
-      L.geoJSON(school).addTo(map);
+
+      //L.geoJSON(skola).addTo(map);
+      var geoJsonLayer = L.geoJson(skola, {
+        // Executes on each feature in the dataset 
+        onEachFeature: function (featureData, featureLayer) {
+          console.log(featureData);
+          // featureData contains the actual feature object
+          // featureLayer contains the indivual layer instance
+          featureLayer.on('click', function () {
+            // Fires on click of single feature
+            console.log('Clicked feature layer ID: ' + featureData.id);
+          });
+        }
+      }).on('click', function () {
+        // Fires on each feature in the layer
+         console.log('Clicked GeoJSON layer');
+      }).addTo(map);;
+
+
+
+
+
+
+
+
+
+
+
 
       var layerOsm = new L.TileLayer('https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
             subdomains: ['server', 'services'],
