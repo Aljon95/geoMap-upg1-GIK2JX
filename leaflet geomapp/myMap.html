@@ -137,13 +137,9 @@
       var minimumDistance = 1000;
       var markets = L.geoJson(superMarket, {
         // Executes on each feature in the dataset 
-        onEachFeature: function (featureData, featureLayer) {
+        onEachFeature: function (featureData) {
           console.log(featureData.geometry.coordinates[0]);
           console.log(featureData)
-          featureLayer.on('click',function(){
-            sidebar.setContent("Store info <br>Store Name: " + featureData.properties.name +"<br/>Shop: " + featureData.properties.shop);
-            sidebar.show();
-          });
           var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
             color: '#add8e6',
             fillColor: '#add8e6',
@@ -154,25 +150,49 @@
         }
       }).addTo(map);
       
-      
+      let indexPos = 0;
       var overlap = L.geoJson(superMarket, {
-        onEachFeature: function (featureData) {
+        onEachFeature: function (featureData,featureLayer) {
           let tempMarket = [];
           tempMarkets.forEach(item => {
             let distance1 = L.latLng(item[2],item[3]);
             let distance2 = L.latLng(featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]);
             let distance3 = distance1.distanceTo(distance2)
-            if(distance3 <= minimumDistance){
+            if(distance3 <= minimumDistance && distance3 !== 0){
               console.log(distance3);
-              tempMarket.push(item[0], item[1]);
+              tempMarket.push(item[1]);
+              var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
+                color: 'red',
+                fillColor: '#000',
+                fillOpacity: 0.5,
+                radius: 500
+              }).addTo(map);
             }
           }, 
           overLapMarkets.push({
             key: featureData.properties.name,
             value: tempMarket
-          })
+          }),
           
+          
+          featureLayer.on('click',function(){
+            Object.keys(overLapMarkets).forEach((key) => {
+              if (overLapMarkets[key].key == featureData.properties.name){
+                overlapValue = overLapMarkets[key].value;
+                sidebar.setContent("Store info <br>Store Name: " + featureData.properties.name +"<br/>overlaps: " + overlapValue);
+                sidebar.show();
+              }; 
+            });
+          
+              
+              
+              
+
+
+          }).addTo(map)
+
           );
+          indexPos += 1;
         }
       })
       console.log(overLapMarkets)
@@ -230,7 +250,10 @@
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
             map.setView(locat, zoo, {animation: true});
-            sidebar.setContent(overLapMarkets)
+            for (const [key, value] of Object.entries(overLapMarkets)) {
+              console.log(key, value);
+            }
+            sidebar.setContent("overlapping" + overLapMarkets)
             sidebar.show();
             return false;
         }
