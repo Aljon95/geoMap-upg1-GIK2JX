@@ -88,7 +88,6 @@
       marker.bindPopup("<b> This belongs to task One.").openPopup();
       polygon.bindPopup("Yta mellan Borlänge, Falun och Leksand").openPopup(); 
 
-     //L.geoJSON(myGeoJSON).addTo(map);
 
       L.control
         .scale({
@@ -97,18 +96,7 @@
           position: "topright",
         })
         .addTo(map);
-        //vector import
-      //var v = myGeoJSON;
-      //L.geoJSON(myGeoJSON).addTo(map);
-      //swe region import
-      //var s = sweden;
-      //L.geoJSON(sweden).addTo(map);
-      //russia region import
-      //var r = russia;
-      //L.geoJSON(russia).addTo(map);
-      //gasstation stockholm import
-      //var g = gas;
-      //L.geoJSON(gas).addTo(map);
+
       var superMarket = superMarkets;
 
 
@@ -156,7 +144,7 @@
           // featureLayer contains the indivual layer instance
           featureLayer.on('click', function () {
             // Fires on click of single feature
-            sidebar.setContent("<b>School information<br></b>"+ "<b>School Name: </b>" + featureData.properties.name +"<br><b>Number of students: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
+            sidebar.setContent("<b>Store info<br></b>"+ "<b>Storename: </b>" + featureData.properties.name +"<br><b>: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
             sidebar.show();
           });
         }
@@ -166,14 +154,12 @@
       }).addTo(map);
 
 
-
-
-
-
-
-
-
-
+      var imageUrl = 'pictures/drottningholmsslott.png',
+    imageBounds = [[59.32238940948281, 17.886870491645023],
+     [59.32104012173038, 17.886842831985515],
+      [59.321222049014004, 17.887650787019975],
+       [59.322191666335094, 17.885962805764645] ];
+L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
       var layerOsm = new L.TileLayer('https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
             subdomains: ['server', 'services'],
@@ -236,19 +222,7 @@
         }
     }
 
-    var imageUrl = 'pictures/drottningholmsslott.png',
-    imageBounds = [[59.32238940948281, 17.886870491645023],
-     [59.32104012173038, 17.886842831985515],
-      [59.321222049014004, 17.887650787019975],
-       [59.322191666335094, 17.885962805764645] ];
-L.imageOverlay(imageUrl, imageBounds).addTo(map);
-
-var circle = L.circle([51.508, -0.11], {
-    color: 'blue',
-    fillColor: 'blue',
-    fillOpacity: 0.3,
-    radius: 900000
-}).addTo(map);
+    
     </script>
   </body>
 </html>
