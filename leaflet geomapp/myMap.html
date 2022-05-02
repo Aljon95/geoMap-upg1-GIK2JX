@@ -71,7 +71,7 @@
         },
       });
       //Task 1
-      var greenIcon = new LeafletIcon({ iconUrl: "https://cdn.klepierre.fr/-/jssmedia/project/klepierre/sweden/kupolen/home-page/logo/kupolen-tagline-main-logo-h-n.png?h=1275&la=sv-SE&w=6445&v=202204270203&hash=C87264ECAABC15FC775165329E56067C" });
+      var greenIcon = new LeafletIcon({ iconUrl: "./pictures/leaf-green.png" });
       var marker = L.marker([60.48457228587976, 15.418152087751187], { icon: greenIcon }).addTo(
         map
       );
@@ -100,7 +100,7 @@
       ];
       marker.bindPopup("<img src='" + markerPic + "'/><b> Kupolen köpcenter Borlänge");
       polyline.bindPopup("E16 / Riksväg 70 mellan Borlänge och Djurås"); 
-      polygon.bindPopup("Shopping"); 
+      polygon.bindPopup("Shopping "); 
 
       L.control
         .scale({
