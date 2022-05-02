@@ -26,7 +26,7 @@
     //nav buttons
     <nav id="mapnav">
         <div id="side-bar">
-            <button id="task_1" href="#" data-zoom="10" data-position="60.640016, 15.294317">Task 1</button>
+            <button id="task_1" href="#" data-zoom="12" data-position="60.48749048875419, 15.411341548724101">Task 1</button>
             <button id="task_2" href="#" data-zoom="13" data-position="58.40396964605505, 13.85556341894664">Task 2</button>
             <button id="task_3" href="#" data-zoom="8" data-position="59.925506790703174, 17.64033555087785">Task 3</button>
             <button id="task_4" href="#" data-zoom="17" data-position="59.3217252470887, 17.886778347187875">Task 4</button>
@@ -93,12 +93,10 @@
         [60.47847313316893, 15.420000583183349],
         [60.484177829450225, 15.408283929888295],
       ]).addTo(map);
-      var markerPic = 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Kupolen%2C_Borl%C3%A4nge%2C_mars_2013.jpeg',
-      imageBounds = [
-        [55.1, 11.6],
-        [55.0, 11.74644]
-      ];
-      marker.bindPopup("<img src='" + markerPic + "'/><b> Kupolen köpcenter Borlänge");
+      var markerPic = 'https://static.hitta.se/static/products/images/InfoText/kupolen_borlange3_Il.png';
+
+      marker.bindPopup("<img src='" + markerPic + "'/><b> Kupolen köpcenter Borlänge ________________________");
+
       polyline.bindPopup("E16 / Riksväg 70 mellan Borlänge och Djurås"); 
       polygon.bindPopup("Shopping "); 
 
@@ -151,7 +149,6 @@ var superMarket = superMarkets;
         }
       }).addTo(map);
       
-      let indexPos = 0;
       var overlap = L.geoJson(superMarket, {
         onEachFeature: function (featureData,featureLayer) {
           let tempMarket = [];
@@ -169,14 +166,15 @@ var superMarket = superMarkets;
                 radius: 500
               }).addTo(map);
             }
+            
           }, 
           overLapMarkets.push({
-            key: featureData.properties.name,
+            key: featureData.properties.full_id,
             value: tempMarket
           }),
           featureLayer.on('click',function(){
             Object.keys(overLapMarkets).forEach((key) => {
-              if (overLapMarkets[key].key == featureData.properties.name){
+              if (overLapMarkets[key].key == featureData.properties.full_id){
                 overlapValue = overLapMarkets[key].value;
                 sidebar.setContent("Store info <br>Store Name: " + featureData.properties.name +"<br/>overlaps: " + overlapValue);
                 sidebar.show();
@@ -184,7 +182,6 @@ var superMarket = superMarkets;
             });
           }).addTo(map)
           );
-          indexPos += 1;
         }
       })
       console.log(overLapMarkets)
@@ -232,10 +229,14 @@ var superMarket = superMarkets;
             var locat = pos.split(',');
             var zoo = parseInt(zoom);
             map.setView(locat, zoo, {animation: true});
+            let storesNotOverlapping = 0;
             for (const [key, value] of Object.entries(overLapMarkets)) {
+              if (overLapMarkets.hasOwnProperty(value)) {
+                storesNotOverlapping +=1;
+              }
               console.log(key, value);
             }
-            sidebar.setContent("overlapping" + overLapMarkets)
+            sidebar.setContent("Amount of stores not overlapping" + storesNotOverlapping)
             sidebar.show();
             return false;
         }
