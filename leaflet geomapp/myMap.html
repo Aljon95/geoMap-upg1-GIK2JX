@@ -227,12 +227,12 @@ var superMarket = superMarkets;
             map.setView(locat, zoo, {animation: true});
             let storesNotOverlapping = 0;
             for (const [key, value] of Object.entries(overLapMarkets)) {
-              if (overLapMarkets.hasOwnProperty(value)) {
+              console.log(value.value.length)
+              if (value.value.length < 1) {
                 storesNotOverlapping +=1;
               }
-              console.log(key, value);
             }
-            sidebar.setContent("Amount of stores not overlapping" + storesNotOverlapping)
+            sidebar.setContent("Amount of stores not overlapping: " + storesNotOverlapping)
             sidebar.show();
             return false;
         }
