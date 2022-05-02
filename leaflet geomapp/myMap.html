@@ -73,15 +73,16 @@
         },
       });
       //Task 1
-      var greenIcon = new LeafletIcon({ iconUrl: "pictures/leaf-green.png" });
-      var marker = L.marker([60.630946, 15.354812], { icon: greenIcon }).addTo(
+      var greenIcon = new LeafletIcon({ iconUrl: "https://cdn.klepierre.fr/-/jssmedia/project/klepierre/sweden/kupolen/home-page/logo/kupolen-tagline-main-logo-h-n.png?h=1275&la=sv-SE&w=6445&v=202204270203&hash=C87264ECAABC15FC775165329E56067C"});
+      var marker = L.marker([60.48458134018435, 15.418042911541935], { icon: greenIcon }).addTo(
         map
       );
       var polyline = L.polyline([[ 60.739092, 15.440673 ],[ 60.660125, 15.314532 ],]).addTo(map);
       var polygon = L.polygon([
-        [60.60643086487198, 15.618589369928078],
-        [60.48023798987668, 15.436571158632077],
-        [60.72619731505316, 15.00311211023543],
+        [60.488177336918184, 15.415295470442816],
+        [60.48324605517862, 15.424844081592722],
+        [60.47847313316893, 15.420000583183349],
+        [60.484177829450225, 15.408283929888295],
       ]).addTo(map);
 
       marker.bindPopup("<b> This belongs to task One.").openPopup();
