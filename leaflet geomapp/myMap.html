@@ -72,7 +72,7 @@
           popupAnchor: [-3, -76],
         },
       });
-      //icon
+      //Task 1
       var greenIcon = new LeafletIcon({ iconUrl: "pictures/leaf-green.png" });
       var marker = L.marker([60.630946, 15.354812], { icon: greenIcon }).addTo(
         map
@@ -96,19 +96,6 @@
         })
         .addTo(map);
 
-      var superMarket = superMarkets;
-
-
-
-
-
-
-
-
-
-
-
-     
 // Task 2 Schools
       var skola = school;
       var schools_skovde = L.geoJson(skola, {
@@ -129,6 +116,7 @@
       }).addTo(map);;
 
 // task 3 Markets
+var superMarket = superMarkets;
       let tempMarkets = [];
       let tempMarket = [];
       let overLapMarkets = [];
@@ -163,7 +151,7 @@
               var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
                 color: 'red',
                 fillColor: '#000',
-                fillOpacity: 0.5,
+                fillOpacity: 0.25,
                 radius: 500
               }).addTo(map);
             }
@@ -267,7 +255,7 @@
             return false;
         }
     }
-
+// Taks 4 image overlay.
     var imageUrl = './pictures/drottningholmsslott.png',
 	imageBounds = [[59.3221475103549, 17.886115750285136],
   [59.32233636161495, 17.8863947],
