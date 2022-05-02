@@ -63,8 +63,6 @@
       var sidebar = L.control.sidebar('sidebar', {position: 'left'});
       map.addControl(sidebar);
       
-       
-
       var LeafletIcon = L.Icon.extend({
         options: {
           iconSize: [38, 95],
@@ -74,19 +72,31 @@
       });
       //icon
       var greenIcon = new LeafletIcon({ iconUrl: "pictures/leaf-green.png" });
-      var marker = L.marker([60.630946, 15.354812], { icon: greenIcon }).addTo(
+      var marker = L.marker([60.48457228587976, 15.418152087751187], { icon: greenIcon }).addTo(
         map
       );
-      var polyline = L.polyline([[ 60.739092, 15.440673 ],[ 60.660125, 15.314532 ],]).addTo(map);
+      var polyline = L.polyline([
+        [60.56051249245288, 15.133532370275024],
+        [60.551208308511775, 15.1640028618629],
+        [60.55222763879222, 15.20937060408934],       
+        [60.55119823629442, 15.221067591070891],
+        [60.55280788670768, 15.250356726017408],
+        [60.54769445448674, 15.27386514036482],
+        [60.54044682707508, 15.282534791193273],
+        [60.53035153071918, 15.313655365547294],
+        [60.528218580318466, 15.3451601578705],
+        [60.51095981419545, 15.382251572433734],
+        [60.484658767806934, 15.420853778211526],]).addTo(map);
       var polygon = L.polygon([
         [60.60643086487198, 15.618589369928078],
         [60.48023798987668, 15.436571158632077],
         [60.72619731505316, 15.00311211023543],
+
       ]).addTo(map);
 
-      marker.bindPopup("<b> This belongs to task One.").openPopup();
-      polygon.bindPopup("Yta mellan Borlänge, Falun och Leksand").openPopup(); 
-
+      marker.bindPopup("<b> Kupolen köpcenter Borlänge");
+      polyline.bindPopup("E16 / Riksväg 70 mellan Borlänge och Djurås"); 
+      polygon.bindPopup("Yta mellan Borlänge, Falun och Leksand"); 
 
       L.control
         .scale({
@@ -98,17 +108,6 @@
 
       var superMarket = superMarkets;
 
-
-
-
-
-
-
-
-
-
-
-     
 // Task 2 Schools
       var skola = school;
       var schools_skovde = L.geoJson(skola, {
@@ -172,8 +171,6 @@
             key: featureData.properties.name,
             value: tempMarket
           }),
-          
-          
           featureLayer.on('click',function(){
             Object.keys(overLapMarkets).forEach((key) => {
               if (overLapMarkets[key].key == featureData.properties.name){
@@ -182,26 +179,12 @@
                 sidebar.show();
               }; 
             });
-          
-              
-              
-              
-
-
           }).addTo(map)
-
           );
           indexPos += 1;
         }
       })
       console.log(overLapMarkets)
-
-
-
-
-
-
-
       var layerOsm = new L.TileLayer('https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
             subdomains: ['server', 'services'],
             maxZoom: 19,
@@ -219,9 +202,6 @@
         })
         polylineMeasure.addTo(map);
       
-
-
-
       document.getElementById('task_1').onclick = function(data) {
         var pos = data.target.getAttribute('data-position');
         var zoom = data.target.getAttribute('data-zoom');
