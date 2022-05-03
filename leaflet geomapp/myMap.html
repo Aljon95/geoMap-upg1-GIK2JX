@@ -26,7 +26,6 @@
             <button id="task_2" href="#" data-zoom="13" data-position="58.40396964605505, 13.85556341894664">Task 2</button>
             <button id="task_3" href="#" data-zoom="8" data-position="59.925506790703174, 17.64033555087785">Task 3</button>
             <button id="task_4" href="#" data-zoom="17" data-position="59.3217252470887, 17.886778347187875">Task 4</button>
-
         </div>
     </nav>
 
@@ -68,9 +67,9 @@
       });
       //Task 1
       var greenIcon = new LeafletIcon({ iconUrl: "./pictures/leaf-green.png" });
-      var marker = L.marker([60.48457228587976, 15.418152087751187], { icon: greenIcon }).addTo(
-        map
-      );
+      var marker = L.marker([60.48457228587976, 15.418152087751187], { icon: greenIcon }
+      ).addTo(map);
+
       var polyline = L.polyline([
         [60.56051249245288, 15.133532370275024],
         [60.551208308511775, 15.1640028618629],
@@ -91,38 +90,33 @@
       ]).addTo(map);
       var markerPic = 'https://static.hitta.se/static/products/images/InfoText/kupolen_borlange3_Il.png';
 
-      marker.bindPopup("<img src='" + markerPic + "'/><b> Kupolen köpcenter Borlänge ________________________");
+      marker.bindPopup("<img src='" + markerPic + "'/><b> Kupolen köpcenter Borlänge _______________________");
 
       polyline.bindPopup("E16 / Riksväg 70 mellan Borlänge och Djurås"); 
-      polygon.bindPopup("Shopping "); 
-
-      L.control
-        .scale({
-          metric: true,
-          imperial: false,
-          position: "topright",
-        }) 
-        .addTo(map);
+      polygon.bindPopup("Shopping"); 
 
 // Task 2 Schools
       var skola = school;
       var schools_skovde = L.geoJson(skola, {
         // Executes on each feature in the dataset 
         onEachFeature: function (featureData, featureLayer) {
-          console.log(featureData);
-          // featureData contains the actual feature object
-          // featureLayer contains the indivual layer instance
           featureLayer.on('click', function () {
             // Fires on click of single feature
             sidebar.setContent("<b>School information<br></b>"+ "<b>School Name: </b>" + featureData.properties.name +"<br><b>Number of students: </b>" + featureData.properties.students + "<br><b>School address: </b>" + featureData.properties.address);
             sidebar.show();
           });
         }
-      }).on('click', function () {
-        // Fires on each feature in the layer
-         console.log('Clicked GeoJSON layer');
       }).addTo(map);;
-
+      let polylineMeasure = L.control.polylineMeasure({
+            position: 'topleft',
+            unit: 'kilometres',
+            showBearings: true,
+            clearMeasurementsOnStop: false,
+            showClearControl: true,
+            showUnitControl: true
+        })
+        polylineMeasure.addTo(map);
+      
 // task 3 Markets
 var superMarket = superMarkets;
       let tempMarkets = [];
@@ -131,10 +125,7 @@ var superMarket = superMarkets;
       
       var minimumDistance = 1000;
       var markets = L.geoJson(superMarket, {
-        // Executes on each feature in the dataset 
         onEachFeature: function (featureData) {
-          console.log(featureData.geometry.coordinates[0]);
-          console.log(featureData)
           var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
             color: '#add8e6',
             fillColor: '#add8e6',
@@ -147,13 +138,12 @@ var superMarket = superMarkets;
       
       var overlap = L.geoJson(superMarket, {
         onEachFeature: function (featureData,featureLayer) {
-          let tempMarket = [];
+          tempMarket = [];
           tempMarkets.forEach(item => {
             let distance1 = L.latLng(item[2],item[3]);
             let distance2 = L.latLng(featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]);
             let distance3 = distance1.distanceTo(distance2)
             if(distance3 <= minimumDistance && distance3 !== 0){
-              console.log(distance3);
               tempMarket.push(item[1]);
               var circle = L.circle([featureData.geometry.coordinates[1],featureData.geometry.coordinates[0]], {
                 color: 'red',
@@ -180,24 +170,15 @@ var superMarket = superMarkets;
           );
         }
       })
-      console.log(overLapMarkets)
-      var layerOsm = new L.TileLayer('https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-            subdomains: ['server', 'services'],
-            maxZoom: 19,
-            noWrap: false,
-            attribution: '<a href="https://www.arcgis.com/">ArcGIS</a>'
-        });
+      // Taks 4 image overlay.
+    var imageUrl = './pictures/drottningholmsslott.png',
+    	imageBounds = [[59.3221475103549, 17.886115750285136],
+      [59.32233636161495, 17.8863947],
+      [59.320995836279565, 17.88737275045877],
+      [59.32119898866181, 17.887633979816467]];
         
-        let polylineMeasure = L.control.polylineMeasure({
-            position: 'topleft',
-            unit: 'kilometres',
-            showBearings: true,
-            clearMeasurementsOnStop: false,
-            showClearControl: true,
-            showUnitControl: true
-        })
-        polylineMeasure.addTo(map);
-      
+    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+    
       document.getElementById('task_1').onclick = function(data) {
         var pos = data.target.getAttribute('data-position');
         var zoom = data.target.getAttribute('data-zoom');
@@ -227,7 +208,6 @@ var superMarket = superMarkets;
             map.setView(locat, zoo, {animation: true});
             let storesNotOverlapping = 0;
             for (const [key, value] of Object.entries(overLapMarkets)) {
-              console.log(value.value.length)
               if (value.value.length < 1) {
                 storesNotOverlapping +=1;
               }
@@ -247,14 +227,7 @@ var superMarket = superMarkets;
             return false;
         }
     }
-// Taks 4 image overlay.
-    var imageUrl = './pictures/drottningholmsslott.png',
-	imageBounds = [[59.3221475103549, 17.886115750285136],
-  [59.32233636161495, 17.8863947],
-  [59.320995836279565, 17.88737275045877],
-  [59.32119898866181, 17.887633979816467]];
 
-L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
     
     </script>
